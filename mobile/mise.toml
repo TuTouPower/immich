@@ -33,10 +33,10 @@ alias = "codegen"
 description = "Generate all codegen artifacts"
 depends = [
   "//:open-api-dart",
-  "//native:codegen",
   "codegen:dart",
   "codegen:drift:migration",
   "codegen:drift:schema",
+  "codegen:native",
   "codegen:pigeon",
   "codegen:translation",
 ]
@@ -84,9 +84,10 @@ description = "Watch and auto-generate dart code"
 run = "dart run build_runner watch"
 
 [tasks."codegen:native"]
-description = "Generate ffigen bindings for the native core"
+description = "Generate the C header and the ffigen bindings for the native core"
 dir = "../native/immich_native_core"
 run = [
+  "cargo build -p immich_core_ffi",
   "flutter pub get",
   "dart run ffigen --config ffigen.yaml",
 ]

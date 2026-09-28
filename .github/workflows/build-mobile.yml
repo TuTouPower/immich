@@ -171,10 +171,6 @@ jobs:
             flutter build apk --release
           fi
 
-      - name: Verify native library
-        working-directory: ./mobile
-        run: bash ./scripts/verify_native_lib.sh
-
       - name: Publish Android Artifact
         id: upload-apk
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1

@@ -9,4 +9,4 @@ fetches the pinned toolchain itself.
 - `crates/immich_core_ffi`: the C ABI, cbindgen writes `include/immich_core.h`
 - `immich_native_core`: Flutter package with the build hook and the ffigen bindings
 
-`mise run build`, `test`, `lint`, `fmt`, and `codegen` (regenerates the header and the Dart bindings).
+`mise run build`, `test`, `lint`, and `fmt`. The header and the Dart bindings come from `mise run //mobile:codegen:native`.

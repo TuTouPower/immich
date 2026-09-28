@@ -16,19 +16,3 @@ run = "cargo fmt --all --check"
 [tasks.lint]
 description = "Run clippy with warnings as errors"
 run = "cargo clippy --workspace --all-targets --locked -- -D warnings"
-
-[tasks.codegen]
-description = "Regenerate the C header and the Dart bindings"
-sources = [
-  "crates/immich_core_ffi/src/**/*.rs",
-  "crates/immich_core_ffi/cbindgen.toml",
-  "immich_native_core/ffigen.yaml",
-]
-outputs = [
-  "crates/immich_core_ffi/include/immich_core.h",
-  "immich_native_core/lib/src/bindings.g.dart",
-]
-run = [
-  "cargo build -p immich_core_ffi",
-  { task = "//mobile:codegen:native" },
-]
